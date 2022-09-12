@@ -18,7 +18,7 @@ typedef struct queue
 
 void init(QUEUE* pq);
 void insertF(QUEUE *pq, int e);
-void insertB(QUEUE *pq, int* e);
+void insertB(QUEUE *pq, int e);
 void deleteF(QUEUE *pq, int *e);
 void deleteB(QUEUE *pq, int *e);
 
@@ -85,10 +85,64 @@ void insertF(QUEUE* pq, int e)
     {
         temp->next = pq->front;
         pq->front = temp;
+        pq->rear = temp;
     }
     else
     {
-        
+        temp->next = pq->front;
+        pq->front = temp;
+        temp->next->prev = temp;
     }
-    
+}
+
+void insertB(QUEUE* pq, int e)
+{
+    NODE *temp = (NODE*)malloc(sizeof(NODE));
+    temp->ele = e;
+    temp->next = NULL;
+    temp->prev = NULL;
+
+    if(pq->rear == NULL)
+    {
+        temp->next = pq->front;
+        pq->front = temp;
+        pq->rear = temp; 
+    }
+    else
+    {
+        temp->prev = pq->rear;
+        pq->rear = temp;
+        temp->prev->next = temp;
+    }
+}
+
+void deleteF(QUEUE* pq, int* e)
+{
+    if(pq->front == NULL)
+    {
+        printf("The queue is empty");
+    }
+    else
+    {
+        NODE* p = pq->front;
+        *e = p->ele;
+        pq->front = p->next;
+        free(p);
+    }
+}
+
+void deleteB(QUEUE* pq,int* e)
+{
+    if(pq->rear == NULL)
+    {
+        printf("The queue is empty");
+    }
+    else
+    {
+        NODE* p = pq->rear;
+        *e = p->ele;
+        pq->rear = p->prev;
+        p->prev->next = NULL;
+        free(p);
+    }
 }
