@@ -127,6 +127,7 @@ void deleteF(QUEUE* pq, int* e)
         NODE* p = pq->front;
         *e = p->ele;
         pq->front = p->next;
+        if(pq->front == NULL) pq->rear == NULL;
         free(p);
     }
 }
@@ -143,6 +144,7 @@ void deleteB(QUEUE* pq,int* e)
         *e = p->ele;
         pq->rear = p->prev;
         p->prev->next = NULL;
+        if(pq->rear == NULL) pq->front == NULL;
         free(p);
     }
 }
