@@ -1,1 +1,2 @@
-# C-Programming
+This repository is a collection of programs written in C Programming Language.
+This contains programs written for learning and practicing the language as well as programs written for my university courses.
