@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main()
+{
+	int -abcs;									
+	int 1abc;									
+	int double;									
+	double = 100;								
+	int a, b, c;
+	a = a:c;
+	if(a < b):									
+		a = 10;
+	if a >= a 									
+	{
+		a = 4436 + 2045 - 5360 * 8997;
+	}
+	if(a > b)
+	{
+		if(a < b)
+		{
+			if(a == b)
+			{
+				int a_5;
+				a_5 = 7876 * 1661 +* 146;		
+			}
+			else								
+		}
+	}
+	while(a <= b)
+		while(a <= b)
+			while(a >= b)
+			{
+				int a_3;
+				a_3 = 3323 == 2665 + 297 > 5816;
+				int a_4;
+				a_4 = 6423 + 3661 * 1998 * 9083 > 2841;
+			}
+}

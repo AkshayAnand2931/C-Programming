@@ -1,54 +1,67 @@
-/*lex program to match identifiers*/
-
 %{
-
-#include <stdio.h>
+#include "parser.tab.h"
 #include <string.h>
-#include "y.tab.h"
-
+extern void yyerror(const char *s);
+int lineno = 1;
 %}
 
-/* Rule selection */
-
+%option yylineno
+%option noyywrap
+alpha [a-zA-Z_]
+digit [0-9]
 %%
 
-"=="    {return EQCOMP;}
-">="    {return GREATEREQ;}
-"<="    {return LESSEREQ;}
-"!="    {return NOTEQ;}
-"++"    {return INC;}
-"--"    {return DEC;}
-"||"    {return OROR;}
-"&&"    {return ANDAND;}
-"!"     {return NOT;}
-"="     {return EQ;}
-"("     {return OPENING_BRACKET;}
-")"     {return CLOSING_BRACKET;}
-"["     {return OPENING_ARRAY_INDEX;}
-"]"     {return CLOSING_ARRAY_INDEX;}
-"{"     {return OPENING_BRACE;}
-"}"     {return CLOSING_BRACE;}
-";"     {return SEMICOLON;}
-","     {return COMMA;}
+"int"                           { return INT; }
+"char"                          { return CHAR; }
+"float"                         { return FLOAT; }
+"double"                        { return DOUBLE; }
+"while"                         { return WHILE; }
+"for"                           { return FOR; }
+"do"                            { return DO; }
+"if"                            { return IF; }
+"switch"                        {return SWITCH;}
+"case"                          {return CASE;}
+"break"                         {return BREAK;}
+"default"                       {return DEFAULT;}
+"else"                          { return ELSE; }
+^"#include"[ ]*<.+\.h>          { return INCLUDE; }
+"main()"                          { return MAIN; }
+"true"                          { return TRUE; }
+"false"                         { return FALSE; }
+"return"                        { return RETURN; }
+"-"                             { return SUBTRAC; }
+[-]?{digit}+[.]?{digit}*        { return NUM; }
+{alpha}({alpha}|{digit})*       { return ID; }
+[']{alpha}[']                   { return STRLITERAL; }
+["]{alpha}["]                   { return STRLITERAL; }
+"=="                            { return EQCOMP; }
+">="                            { return GREATEREQ; }
+"<="                            { return LESSEREQ; }
+"!="                            { return NOTEQ; }
+"++"                            { return INC; }
+"--"                            { return DEC; }
+">"	                            { return GREATER; }
+"<"	                            { return LESSER; }
+"||"                            { return OROR; }
+"&&"                            { return ANDAND; }
+"!"                             { return NOT; }
+"("                             { return LPAREN; }
+")"                             { return RPAREN; }
+"["                             { return LBRACKET; }
+"]"                             { return RBRACKET; }
+"{"                             { return LBRACE; }
+"}"                             { return RBRACE; }
+":"                             { return COLON; }
+";"                             { return SEMICOLON; }
+","                             { return COMMA; }
+"+"                             { return ADD; }
+"="                             { return EQ; }
+"/"                             { return DIVIDE; }
+"*"                             { return MULTIPLY; }
+\/\/.*                          { ; }
+\/\*(.*\n)*.*\*\/               { ; } 
+[ \t]*                          { ; }
+[\n]                            { lineno++;}
+.                               { yyerror("Unknown character"); return *yytext;}
 
-"int"       {return INT;}
-"char"      {return CHAR;}
-"float"     {return FLOAT;}
-"double"    {return DOUBLE;}
-"while"     {return WHILE;}
-"for"       {return FOR;}
-"do"        {return DO;}
-"if"        {return IF;}
-"else"      {return ELSE;}
-"#include"  {return INCLUDE;}
-"main"      {return MAIN;}
-
-[a-zA-Z][a-zA-Z0-9_]*   {yylval.str = strdup(yytext); return ID;}
-[0-9]+      {yylval.num = atoi(yytext); return NUM;}
-
-\"([^\"\n])*\"      {yylval.str = strdup(yytext); return STRLITERAL;}
-\<([^>\n])*\>       {yylval.str = strdup(yytext); return HEADER;}
-
-[ \t\n]     ;//Ignore whitespace
-.       {printf("Unknown tokens: %s\n",yytext);}    
 %%

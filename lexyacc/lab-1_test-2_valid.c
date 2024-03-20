@@ -1,10 +1,12 @@
-// This file contains valid C code
-
 #include <stdio.h>
 
 int main()
 {
-	int a, b;
+	int a=5, b, c, d=10;
+	int a[10]; 
+	int a[5][5]; 
+	int a[5][6][7][8]; 
+	int a[4][4], b[5];
 	a = 10;
 	b = 11;
 	a = 131 + 4436 - 2045 * 5360 / 8997;
@@ -44,5 +46,11 @@ int main()
 				a_4 = 6423 + 3661 * 1998;
 			}
 		}
+	}
+
+	switch(a){
+		case 1: a++;
+		case 2: a--;break;
+		default: b = a + 1;
 	}
 }

@@ -39,96 +39,59 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUM = 258,
-     STRLITERAL = 259,
-     HEADER = 260,
-     ID = 261,
-     INT = 262,
-     CHAR = 263,
-     FLOAT = 264,
-     DOUBLE = 265,
-     WHILE = 266,
-     FOR = 267,
-     DO = 268,
-     IF = 269,
+     INT = 258,
+     CHAR = 259,
+     FLOAT = 260,
+     DOUBLE = 261,
+     WHILE = 262,
+     FOR = 263,
+     DO = 264,
+     IF = 265,
+     SWITCH = 266,
+     CASE = 267,
+     BREAK = 268,
+     DEFAULT = 269,
      ELSE = 270,
      INCLUDE = 271,
      MAIN = 272,
-     EQCOMP = 273,
-     GREATEREQ = 274,
-     LESSEREQ = 275,
-     NOTEQ = 276,
-     INC = 277,
-     DEC = 278,
-     OROR = 279,
-     ANDAND = 280,
-     NOT = 281,
-     EQ = 282,
-     OPENING_BRACKET = 283,
-     CLOSING_BRACKET = 284,
-     OPENING_ARRAY_INDEX = 285,
-     CLOSING_ARRAY_INDEX = 286,
-     OPENING_BRACE = 287,
-     CLOSING_BRACE = 288,
-     SEMICOLON = 289,
-     COMMA = 290
+     TRUE = 273,
+     FALSE = 274,
+     RETURN = 275,
+     SUBTRAC = 276,
+     ID = 277,
+     NUM = 278,
+     STRLITERAL = 279,
+     GREATER = 280,
+     LESSER = 281,
+     ADD = 282,
+     EQ = 283,
+     DIVIDE = 284,
+     MULTIPLY = 285,
+     EQCOMP = 286,
+     GREATEREQ = 287,
+     LESSEREQ = 288,
+     NOTEQ = 289,
+     INC = 290,
+     DEC = 291,
+     OROR = 292,
+     ANDAND = 293,
+     NOT = 294,
+     LPAREN = 295,
+     RPAREN = 296,
+     LBRACKET = 297,
+     RBRACKET = 298,
+     LBRACE = 299,
+     RBRACE = 300,
+     SEMICOLON = 301,
+     COMMA = 302,
+     COLON = 303
    };
 #endif
-/* Tokens.  */
-#define NUM 258
-#define STRLITERAL 259
-#define HEADER 260
-#define ID 261
-#define INT 262
-#define CHAR 263
-#define FLOAT 264
-#define DOUBLE 265
-#define WHILE 266
-#define FOR 267
-#define DO 268
-#define IF 269
-#define ELSE 270
-#define INCLUDE 271
-#define MAIN 272
-#define EQCOMP 273
-#define GREATEREQ 274
-#define LESSEREQ 275
-#define NOTEQ 276
-#define INC 277
-#define DEC 278
-#define OROR 279
-#define ANDAND 280
-#define NOT 281
-#define EQ 282
-#define OPENING_BRACKET 283
-#define CLOSING_BRACKET 284
-#define OPENING_ARRAY_INDEX 285
-#define CLOSING_ARRAY_INDEX 286
-#define OPENING_BRACE 287
-#define CLOSING_BRACE 288
-#define SEMICOLON 289
-#define COMMA 290
-
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-{
-
-/* Line 1676 of yacc.c  */
-#line 14 "parser.y"
-
-
-    int num;
-    char *str;
-
-
-
-
-/* Line 1676 of yacc.c  */
-#line 131 "y.tab.h"
-} YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
