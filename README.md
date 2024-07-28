@@ -1,2 +1,4 @@
-This repository is a collection of programs written in C Programming Language.
-This contains programs written for learning and practicing the language as well as programs written for my university courses.
+# C Programming
+
+This repository is for my learning and practise of C Programming Language.
+This contains programs written for my personal learning as well as written for my university courses such as **Data Structures and Applications**.
